@@ -3,7 +3,6 @@ trigger:
 
 pool:
   name: pool1
-environment: 'dev'
 
 stages:
 - stage: Build_Stage
@@ -40,3 +39,17 @@ stages:
         packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
         nuGetFeedType: 'internal'
         publishVstsFeed: 'fb58a91b-8a3f-4371-9694-c0cd0cdcdad3/4e7e4cdd-1378-41d2-8a5d-3797cede094c'
+
+- stage: Deploy_Stage
+  jobs:
+  - deployment: DeployWeb
+    displayName: deploy Web App
+    pool:
+      name: 'pool1'
+    # creates an environment if it doesn't exist
+    environment: 'smarthotel-dev'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - script: echo Hello world
