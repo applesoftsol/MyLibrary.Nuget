@@ -45,7 +45,7 @@ stages:
   - deployment: DeployWeb
     displayName: deploy Web App
     pool:
-      name: 'pool1'
+      vmImage: 'windows-latest'
     # creates an environment if it doesn't exist
     environment: 'dev'
     strategy:
