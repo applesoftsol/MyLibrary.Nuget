@@ -47,7 +47,7 @@ stages:
     pool:
       name: 'pool1'
     # creates an environment if it doesn't exist
-    environment: 'smarthotel-dev'
+    environment: 'dev'
     strategy:
       runOnce:
         deploy:
